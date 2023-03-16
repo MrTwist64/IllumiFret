@@ -100,7 +100,7 @@ public:
   }
 
   // Reads a file and returns the first line as a string.
-  String fileFirstLine(String fileName) {
+  String fileLongName(String fileName) {
     File f = SD.open(fileName);
 
     if (!f)
