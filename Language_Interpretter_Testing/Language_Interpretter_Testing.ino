@@ -1,5 +1,6 @@
 #include "sdAccess.h"
 #include "interpreter.h"
+#include "interpreter2.h"
 #include "ledBoard.h"
 
 void setup() {
@@ -10,9 +11,18 @@ void setup() {
   SDAccess sd;
   sd.init();
   sd.openDir("/");
-  Interpreter inter;
+  
+  // Interpreter inter;
+  // //String input = sd.fileToString("TEST2.TXT");
+  // String input = "{Test Program for Prototype}#1000$50,0,0:102030405060:$0,50,0:113151:#1000$50,0,0:122232425262:$0,50,0:214161:ER";
+  // Serial.println(input);
+  // inter.setInput(input);
+  // inter.playInput();
 
-  String input = sd.fileToString("TEST2.TXT");
+  
+  Interpreter2 inter;
+  //String input = sd.fileToString("TEST2.TXT");
+  String input = "Name:Test Program for Prototype;StartFrame:1000;Color:50,0,0;LEDS:10,20,30,40,50,60;Color:0,50,0;LEDS:11,31,51;EndFrame;StartFrame:1000;Color:50,0,0;LEDS:12,22,32,42,52,62;Color:0,50,0;LEDS:21,41,61;EndFrame;Repeat;";
   Serial.println(input);
   inter.setInput(input);
   inter.playInput();
@@ -21,22 +31,3 @@ void setup() {
 void loop() {
 
 }
-
-
-
-//   String myFiles[30];
-//   int myFilesLen = dirToArray(SD.open("/"), myFiles, 30);
-
-//   Serial.println();
-//   Serial.println("Print File Array:");
-//   for(int i = 0; i < myFilesLen; i++) {
-//     Serial.print(i);
-//     Serial.print(": ");
-//     Serial.println(myFiles[i]);
-//   }
-
-//   Serial.println();
-//   Serial.println("Printing test.txt:");
-//   printFile("test.txt");
-
-//   //printDirectory(SD.open("/"), 0);
