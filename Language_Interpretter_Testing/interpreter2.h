@@ -19,13 +19,15 @@ private:
   // Advances to the next character in the input.
   void _nextChar() 
   {
-    Serial.print("Consuming '");
-    Serial.print(ch);
+    // Uncomment the prints for debugging.
+    // This slows down the output by A LOT.
+    //Serial.print("Consuming '");
+    //Serial.print(ch);
     i++;
     ch = input[i];
-    Serial.print("', loading '");
-    Serial.print(ch);
-    Serial.println("'");
+    //Serial.print("', loading '");
+    //Serial.print(ch);
+    //Serial.println("'");
   }
 
   // 
@@ -122,7 +124,6 @@ private:
   // Returns whether the line was read successfully.
   bool _lineStartFrame(int* delay)
   {
-    Serial.println("_lineStartFrame()");
     // Makes current frame empty
     board.newFrame();
 
@@ -147,7 +148,6 @@ private:
   // Returns whether the line was read successfully.
   bool _lineColor(int* red, int* green, int* blue)
   {
-    Serial.println("_lineColor()");
     // Checks for "Color".
     // If found, skip past it.
     if (ch != 'C') {_error("C", ch); return false;}
@@ -189,7 +189,6 @@ private:
   // Returns whether the line was read successfully.
   bool _lineLEDS(int red, int green, int blue)
   {
-    Serial.println("_lineLEDS()");
     char string, fret;
 
     // Checks for "Color".
@@ -229,7 +228,6 @@ private:
   // Returns whether the line was read succesfully.
   bool _lineEndFrame(int delayms)
   {
-    Serial.println("_lineEndFrame()");
     // Checks for "EndFrame".
     // If found, skip past it.
     if (ch != 'E') {_error("E", ch); return false;}

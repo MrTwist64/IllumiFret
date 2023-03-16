@@ -18,19 +18,19 @@ private:
   std::map<char,int> fretValuesMap;
 
   int _charsToInt(char string, char fret) {
-    Serial.print("String: ");
-    Serial.print(string);
-    Serial.print(" Fret: ");
-    Serial.print(fret);
+    // Serial.print("String: ");
+    // Serial.print(string);
+    // Serial.print(" Fret: ");
+    // Serial.print(fret);
     int stringValue = (string - '0' - 1);
     int fretValue = fretValuesMap[fret];
-    Serial.print(" StringVal: ");
-    Serial.print(stringValue);
-    Serial.print(" FretVal: ");
-    Serial.print(fretValue);
+    // Serial.print(" StringVal: ");
+    // Serial.print(stringValue);
+    // Serial.print(" FretVal: ");
+    // Serial.print(fretValue);
     int ledValue = (fretValue * 6) + stringValue;
-    Serial.print(" LED: ");
-    Serial.println(ledValue);
+    // Serial.print(" LED: ");
+    // Serial.println(ledValue);
     return ledValue;
   }
 
@@ -72,14 +72,14 @@ private:
   // values to actual values before calling this function.
   void _setPixel(int pixelNum, int red, int green, int blue) {
     out.setPixelColor(pixelNum, out.Color(red, green, blue));
-    Serial.print(pixelNum);
-    Serial.print("(");
-    Serial.print(red);
-    Serial.print(", ");
-    Serial.print(green);
-    Serial.print(", ");
-    Serial.print(blue);
-    Serial.println(")");
+    // Serial.print(pixelNum);
+    // Serial.print("(");
+    // Serial.print(red);
+    // Serial.print(", ");
+    // Serial.print(green);
+    // Serial.print(", ");
+    // Serial.print(blue);
+    // Serial.println(")");
   }
 
 public:
@@ -92,13 +92,13 @@ public:
   // Displays the currently set frame onto the LED board.
   void showFrame() {
     out.show();
-    Serial.println("Show Frame");
+    // Serial.println("Show Frame");
   }
 
   // Clears all pixel values for an empty frame.
   void newFrame() {
     out.clear();
-    Serial.println("Clear Frame");
+    // Serial.println("Clear Frame");
   }
 
   // Sets the LED to the RGB value given for the next frame.
