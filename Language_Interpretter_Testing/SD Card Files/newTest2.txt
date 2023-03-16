@@ -1,0 +1,133 @@
+Name:Test Program for Prototype;
+
+StartFrame:100;
+  Color:100,0,0;
+    LEDS:10;
+EndFrame;
+
+StartFrame:100;
+  Color:50,50,0;
+    LEDS:10;
+  Color:100,0,0;
+    LEDS:11,20;
+EndFrame;
+
+StartFrame:100;
+  Color:0,100,0;
+    LEDS:10;
+  Color:50,50,0;
+    LEDS:11,20;
+  Color:100,0,0;
+    LEDS:12,21,30;
+EndFrame;
+
+StartFrame:100;
+  Color:0,50,50;
+    LEDS:10;
+  Color:0,100,0;
+    LEDS:11,20;
+  Color:50,50,0;
+    LEDS:12,21,30;
+  Color:100,0,0;
+    LEDS:13,22,31,40;
+EndFrame;
+
+StartFrame:100;
+  Color:50,0,50;
+    LEDS:10;
+  Color:0,50,50;
+    LEDS:11,20;
+  Color:0,100,0;
+    LEDS:12,21,30;
+  Color:50,50,0;
+    LEDS:13,22,31,40;
+  Color:100,0,0;
+    LEDS:23,32,41,50;
+EndFrame;
+
+StartFrame:100;
+  Color:50,0,50;
+    LEDS:11,20;
+  Color:0,50,50;
+    LEDS:12,21,30;
+  Color:0,100,0;
+    LEDS:13,22,31,40;
+  Color:50,50,0;
+    LEDS:23,32,41,50;
+  Color:100,0,0;
+	LEDS:33,42,51,60;
+EndFrame;
+
+StartFrame:100;
+  Color:50,0,50;
+    LEDS:12,21,30;
+  Color:0,50,50;
+    LEDS:13,22,31,40;
+  Color:0,100,0;
+    LEDS:23,32,41,50;
+  Color:50,50,0;
+	LEDS:33,42,51,60
+  Color:100,0,0;
+	LEDS:43,52,61;
+
+StartFrame:100;
+  Color:50,0,50;
+    LEDS:13,22,31,40;
+  Color:0,50,50;
+    LEDS:23,32,41,50;
+  Color:0,100,0;
+	LEDS:33,42,51,60
+  Color:50,50,0;
+	LEDS:43,52,61;
+  Color:100,0,0;
+	LEDS:53,62;
+EndFrame;
+
+StartFrame:100;
+  Color:50,0,50;
+    LEDS:23,32,41,50;
+  Color:0,50,50;
+	LEDS:33,42,51,60
+  Color:0,100,0;
+	LEDS:43,52,61;
+  Color:50,50,0;
+	LEDS:53,62;
+  Color:100,0,0;
+    LEDS:63;
+
+StartFrame:100;
+  Color:50,0,50;
+	LEDS:33,42,51,60
+  Color:0,50,50;
+	LEDS:43,52,61;
+  Color:0,100,0;
+	LEDS:53,62;
+  Color:50,50,0;
+    LEDS:63;
+EndFrame;
+
+StartFrame:100;
+  Color:50,0,50;
+	LEDS:43,52,61;
+  Color:0,50,50;
+	LEDS:53,62;
+  Color:0,100,0;
+    LEDS:63;
+EndFrame;
+
+StartFrame:100;
+  Color:50,0,50;
+	LEDS:53,62;
+  Color:0,50,50;
+    LEDS:63;
+EndFrame;
+
+StartFrame:100;
+  Color:50,0,50;
+    LEDS:63;
+EndFrame;
+
+StartFrame:1000;
+EndFrame;
+
+Repeat;
