@@ -61,7 +61,7 @@ private:
     board.newFrame();
 
     String temp;
-    _nextChar(); // TEMP - SKIPS A BLANK CHAR THAT I SOMEHOW CANT GET RID OF BECAUSE OF NEW LINE
+    //_nextChar(); // TEMP - SKIPS A BLANK CHAR THAT I SOMEHOW CANT GET RID OF BECAUSE OF NEW LINE
 
     int delayms = 0;
     if (ch == '#') {
@@ -83,7 +83,7 @@ private:
         _nextChar();
         fret = ch;
         _nextChar();
-        board.setPixel(string, fret, red, blue, green);
+        board.setPixel(string, fret, red, green, blue);
       }
       _nextChar();
     }
