@@ -1,6 +1,8 @@
 #ifndef INTERPRETER2_H
 #define INTERPRETER2_H
 
+#include <ArduinoBLE.h>
+
 #include "Arduino.h"
 #include <string>
 #include <ctype.h>
@@ -21,13 +23,13 @@ private:
   {
     // Uncomment the prints for debugging.
     // This slows down the output by A LOT.
-    //Serial.print("Consuming '");
-    //Serial.print(ch);
+    // Serial.print("Consuming '");
+    // Serial.print(ch);
     i++;
     ch = input[i];
-    //Serial.print("', loading '");
-    //Serial.print(ch);
-    //Serial.println("'");
+    // Serial.print("', loading '");
+    // Serial.print(ch);
+    // Serial.println("'");
   }
 
   // 
@@ -52,6 +54,7 @@ private:
   {
     _removeName();
     _removeWhitespace();
+    //_removeWhitespace(); // Pass 2
   }
 
   // Removes the name information from the input.
@@ -71,10 +74,22 @@ private:
   // Removes whitespace from the input
   void _removeWhitespace()
   {
-    input.replace(" ", ""); // Spaces
-    input.replace("\t", ""); // Tabs
-    input.replace("\n", ""); // New lines
-    input.replace("\r", ""); // Returns
+    _remove(' ');
+    _remove('\t');
+    _remove('\n');
+    _remove('\r');
+  }
+
+  // Removes a character from the input
+  void _remove(char toRemove)
+  {
+    i = 0;
+    i = input.indexOf(toRemove, i);
+    while (i != -1)
+    {
+      input.remove(i, 1);
+      i = input.indexOf(toRemove, i);
+    }
   }
 
   // Skips the current command and goes to the next line after a semicolon.
@@ -240,7 +255,12 @@ private:
     return true;
   }
 
+  BLEStringCharacteristic* switchCharacteristic;
+
 public: 
+  Interpreter2(BLEStringCharacteristic* switchCharacteristic) {
+    this->switchCharacteristic = switchCharacteristic;
+  }
 
   // Sets and cleans the input.
   void setInput(String newInput) 
@@ -248,14 +268,28 @@ public:
     this->input = newInput;
     _cleanInput();
   }
+
+  String getInput()
+  {
+    return this->input;
+  }
   
   void playInput()
   {
     i = 0;
     ch = input[i];
 
+    Serial.println("From inside playInput()");
+    Serial.println(switchCharacteristic->value());
+
     while (true)
     {
+      Serial.println("Inside Loop");
+      if (switchCharacteristic->written())
+        return;
+      // Serial.print("Searching for ");
+      // Serial.println(ch);
+
       // Test for "StartFrame".
       if (ch == 'S')
       {
@@ -273,7 +307,11 @@ public:
 
       // Test for "FileEnd"
       if (ch == 'F')
-        break;      
+        break;
+      
+      // Serial.print("Did not find ");
+      // Serial.println(ch);
+      _nextChar();
     }
   }
 

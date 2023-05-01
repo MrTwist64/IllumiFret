@@ -66,9 +66,10 @@ StartFrame:100;
   Color:0,100,0;
     LEDS:23,32,41,50;
   Color:50,50,0;
-	LEDS:33,42,51,60
+	LEDS:33,42,51,60;
   Color:100,0,0;
 	LEDS:43,52,61;
+EndFrame;
 
 StartFrame:100;
   Color:50,0,50;
@@ -76,7 +77,7 @@ StartFrame:100;
   Color:0,50,50;
     LEDS:23,32,41,50;
   Color:0,100,0;
-	LEDS:33,42,51,60
+	LEDS:33,42,51,60;
   Color:50,50,0;
 	LEDS:43,52,61;
   Color:100,0,0;
@@ -87,17 +88,18 @@ StartFrame:100;
   Color:50,0,50;
     LEDS:23,32,41,50;
   Color:0,50,50;
-	LEDS:33,42,51,60
+	LEDS:33,42,51,60;
   Color:0,100,0;
 	LEDS:43,52,61;
   Color:50,50,0;
 	LEDS:53,62;
   Color:100,0,0;
     LEDS:63;
+EndFrame;
 
 StartFrame:100;
   Color:50,0,50;
-	LEDS:33,42,51,60
+	LEDS:33,42,51,60;
   Color:0,50,50;
 	LEDS:43,52,61;
   Color:0,100,0;

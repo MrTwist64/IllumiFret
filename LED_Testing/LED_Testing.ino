@@ -1,7 +1,8 @@
 #include <Adafruit_NeoPixel.h>
+//#define NUM_LEDS 24
 #define NUM_LEDS 138
 #define DATA_PIN D0
-#define BRIGHTNESS 10
+#define BRIGHTNESS 30
 
 Adafruit_NeoPixel pixels(NUM_LEDS, DATA_PIN, NEO_GRB + NEO_KHZ800);
 
@@ -10,28 +11,40 @@ void setup() {
   pixels.clear();
 }
 
-//int redLEDs[][];
-
 void loop() {
   for(int i = 0; i < NUM_LEDS + 1; i++)
   {
-    for(int j = 0; j < i; j++)
-      pixels.setPixelColor(j, pixels.Color(30, 30, 30));
-    pixels.show();
-    delay(10);
+    pixels.setPixelColor(i, pixels.Color(BRIGHTNESS, 0, 0));
   }
-  delay(100000);
-  
-  
-  // pixels.setPixelColor(1, pixels.Color(BRIGHTNESS, BRIGHTNESS, BRIGHTNESS));
-  // pixels.setPixelColor(2, pixels.Color(BRIGHTNESS, BRIGHTNESS, BRIGHTNESS));
-  // pixels.setPixelColor(15, pixels.Color(BRIGHTNESS, BRIGHTNESS, BRIGHTNESS));
-  // pixels.setPixelColor(17, pixels.Color(BRIGHTNESS, BRIGHTNESS, BRIGHTNESS));
-  // pixels.setPixelColor(22, pixels.Color(BRIGHTNESS, BRIGHTNESS, BRIGHTNESS));
-  // pixels.show();
+  pixels.show();
 
-  // pixels.setPixelColor(23, pixels.Color(BRIGHTNESS, BRIGHTNESS, BRIGHTNESS));
+  // for(int i = 0; i < NUM_LEDS + 1; i++)
+  // {
+  //   pixels.setPixelColor(i, pixels.Color(BRIGHTNESS, 0, 0));
+  //   pixels.show();
+  //   pixels.clear();
+  //   delay(50);
+  // }
   
+  // delay(250);
+
+  // for(int i = 0; i < NUM_LEDS + 1; i++)
+  // {
+  //   pixels.setPixelColor(i, pixels.Color(0, BRIGHTNESS, 0));
+  //   pixels.show();
+  //   pixels.clear();
+  //   delay(50);
+  // }
   
-  pixels.clear();
+  // delay(250);
+
+  // for(int i = 0; i < NUM_LEDS + 1; i++)
+  // {
+  //   pixels.setPixelColor(i, pixels.Color(0, 0, BRIGHTNESS));
+  //   pixels.show();
+  //   pixels.clear();
+  //   delay(50);
+  // }
+
+  // delay(250);
 }
