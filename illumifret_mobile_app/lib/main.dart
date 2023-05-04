@@ -160,6 +160,8 @@ class MainMenu extends StatelessWidget {
                 child: ElevatedButton(
                   child: const Text("Settings"),
                   onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Settings()));
                   },
                 ),
               ),
@@ -208,4 +210,48 @@ class SongList extends DisplayStrList {
     ["newTest1.txt", "newTest1"],
     ["newTest2.txt", "newTest2"],
   ];
+}
+
+class Settings extends StatefulWidget{
+  @override
+  State<Settings> createState() => SliderState();
+}
+class SliderState extends State<Settings>{
+  double sliderValue = 50;
+  @override
+  Widget build(BuildContext context){
+    return Scaffold(
+      appBar: AppBar(title: const Text('Slider')),//appBar
+      body: Center(
+        child: Column(
+            children:[
+              const Text(
+                'Brightness',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(
+                height: 30
+              ),
+              Slider(
+                  value: sliderValue,
+                  max: 100,
+                  divisions: 10,
+                  label: sliderValue.round().toString(),
+                  onChanged: (double value){
+                    setState((){
+                      sliderValue = value;
+                    });
+                  }
+              ),//Slider
+              ElevatedButton(
+                onPressed:(){
+                  print(sliderValue.round().toString());
+                  Navigator.pop(context);
+                },
+                child: const Text('Save'),
+              ),//ElevatedButton
+            ]),//Column
+      ),//Center
+    );
+  }
 }
