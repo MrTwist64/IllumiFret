@@ -8,7 +8,7 @@
 
 using namespace std;
 
-#define NUM_LEDS 24
+#define NUM_LEDS 138
 #define DATA_PIN D0
 #define MAX_BRIGHTNESS 30
 

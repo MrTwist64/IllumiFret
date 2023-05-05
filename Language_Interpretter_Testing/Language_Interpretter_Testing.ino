@@ -38,7 +38,7 @@ void loop() {
   bool dataSent = false;
   BLEDevice central;
 
-  while(!nameChosen) {
+  while(!dataSent) {
     central = BLE.central();
     digitalWrite(LED_BUILTIN, HIGH); // Indicates waiting for connection/data
 
@@ -63,6 +63,7 @@ void loop() {
   sd.openDir("/");
   
   String input = sd.fileToString(stringChar->value()); // "newTest2.txt"
+  // String input = sd.fileToString("cPenta.txt");
   inter->setInput(input);
   Serial.println(inter->getInput());
   inter->playInput(); // Plays animation, does NOT return
