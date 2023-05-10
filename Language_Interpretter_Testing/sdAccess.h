@@ -117,7 +117,8 @@ public:
       return "";
     }
 
-    String contents = f.readStringUntil('\n');
+    f.readStringUntil(':');
+    String contents = f.readStringUntil(';');
     f.close();
     return contents;
   }

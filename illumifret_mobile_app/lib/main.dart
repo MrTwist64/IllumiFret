@@ -1,20 +1,31 @@
 import 'package:flutter/material.dart';
 import 'displayStrList.dart';
+import 'settings.dart';
+import 'customFile.dart';
 import 'ble.dart';
-import 'bleTest.dart';
+
+const buttonHeight = 125.0;
+const buttonWidth = 150.0;
+const dividerHeight = 12.5;
+const dividerWidth = 12.5;
 
 Blue blue = Blue();
+int settingMaxBrightness = 30;
+String fileListStr = "";
 
 void main() {
   runApp(MaterialApp(
     title: 'Illumifret App',
     theme: ThemeData(
       colorSchemeSeed: Colors.pink,
+      textTheme: const TextTheme(
+        bodyMedium: TextStyle(fontSize: 20.0),
+      ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.pink[100],
           foregroundColor: Colors.black,
-          textStyle: TextStyle(
+          textStyle: const TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 20.0,
           ),
@@ -41,8 +52,8 @@ class MainMenu extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
-                height: 150,
-                width: 150,
+                height: buttonHeight,
+                width: buttonWidth,
                 child: ElevatedButton(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -64,11 +75,11 @@ class MainMenu extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                width: 15,
+                width: dividerWidth,
               ),
               SizedBox(
-                height: 150,
-                width: 150,
+                height: buttonHeight,
+                width: buttonWidth,
                 child: ElevatedButton(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -92,20 +103,20 @@ class MainMenu extends StatelessWidget {
             ],
           ),
           const SizedBox(
-            height: 15,
+            height: dividerHeight,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
-                height: 150,
-                width: 150,
+                height: buttonHeight,
+                width: buttonWidth,
                 child: ElevatedButton(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: const [
                       Icon(
-                        Icons.play_arrow_rounded,
+                        Icons.fitness_center_rounded,
                         size: 70,
                       ),
                       SizedBox(
@@ -115,17 +126,19 @@ class MainMenu extends StatelessWidget {
                     ],
                   ),
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => ExerciseList()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ExerciseList()));
                   },
                 ),
               ),
               const SizedBox(
-                width: 15,
+                width: dividerWidth,
               ),
               SizedBox(
-                height: 150,
-                width: 150,
+                height: buttonHeight,
+                width: buttonWidth,
                 child: ElevatedButton(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -149,19 +162,110 @@ class MainMenu extends StatelessWidget {
             ],
           ),
           const SizedBox(
-            height: 15,
+            height: dividerHeight,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
-                height: 75,
-                width: 315,
+                height: buttonHeight,
+                width: buttonWidth,
                 child: ElevatedButton(
-                  child: const Text("Settings"),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Icon(
+                        Icons.play_arrow_rounded,
+                        size: 70,
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Text("Animations"),
+                    ],
+                  ),
                   onPressed: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Settings()));
+                        MaterialPageRoute(builder: (context) => AnimationList()));
+                  },
+                ),
+              ),
+              const SizedBox(
+                width: dividerWidth,
+              ),
+              SizedBox(
+                height: buttonHeight,
+                width: buttonWidth,
+                child: ElevatedButton(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Icon(
+                        Icons.manage_search_rounded,
+                        size: 70,
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Text("Custom"),
+                    ],
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Custom())
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(
+            height: dividerHeight,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
+                height: buttonHeight,
+                width: (buttonWidth*2 + dividerWidth),
+                child: ElevatedButton(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Icon(
+                        Icons.settings_rounded,
+                        size: 70,
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Text("Settings"),
+                    ],
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Settings())
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(
+            height: dividerHeight,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
+                height: (buttonHeight/2),
+                width: (buttonWidth*2 + dividerWidth),
+                child: ElevatedButton(
+                  child: const Text("Connect To Illumifret"),
+                  onPressed: () {
+                    blue.connect();
                   },
                 ),
               ),
@@ -207,51 +311,16 @@ class ExerciseList extends DisplayStrList {
 class SongList extends DisplayStrList {
   final String barTitle = "Songs";
   final List<List<String>> itemList = [
+    //[".txt", ""],
+  ];
+}
+
+class AnimationList extends DisplayStrList {
+  final String barTitle = "Songs";
+  final List<List<String>> itemList = [
     ["newTest1.txt", "newTest1"],
     ["newTest2.txt", "newTest2"],
   ];
 }
 
-class Settings extends StatefulWidget{
-  @override
-  State<Settings> createState() => SliderState();
-}
-class SliderState extends State<Settings>{
-  double sliderValue = 50;
-  @override
-  Widget build(BuildContext context){
-    return Scaffold(
-      appBar: AppBar(title: const Text('Slider')),//appBar
-      body: Center(
-        child: Column(
-            children:[
-              const Text(
-                'Brightness',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(
-                height: 30
-              ),
-              Slider(
-                  value: sliderValue,
-                  max: 100,
-                  divisions: 10,
-                  label: sliderValue.round().toString(),
-                  onChanged: (double value){
-                    setState((){
-                      sliderValue = value;
-                    });
-                  }
-              ),//Slider
-              ElevatedButton(
-                onPressed:(){
-                  print(sliderValue.round().toString());
-                  Navigator.pop(context);
-                },
-                child: const Text('Save'),
-              ),//ElevatedButton
-            ]),//Column
-      ),//Center
-    );
-  }
-}
+

@@ -10,12 +10,13 @@ using namespace std;
 
 #define NUM_LEDS 138
 #define DATA_PIN D0
-#define MAX_BRIGHTNESS 30
+#define DEFAULT_BRIGHTNESS 30
 
 class LEDBoard {
 private:
   Adafruit_NeoPixel out = Adafruit_NeoPixel(NUM_LEDS, DATA_PIN, NEO_GRB + NEO_KHZ800);
   std::map<char,int> fretValuesMap;
+  int brightness = DEFAULT_BRIGHTNESS;
 
   int _charsToInt(char string, char fret) {
     // Serial.print("String: ");
@@ -62,7 +63,7 @@ private:
   }
 
   int _percentColorToActualColor(int percentColor) {
-    int actualColor = ((double)percentColor / 100) * MAX_BRIGHTNESS;
+    int actualColor = ((double)percentColor / 100) * brightness;
     return actualColor;
   }
 
@@ -123,6 +124,10 @@ public:
     int greenValue = _percentColorToActualColor(green);
     int blueValue = _percentColorToActualColor(blue);
     this->_setPixel(pixelNum, redValue, greenValue, blueValue);
+  }
+
+  void setBrightness(int brightness) {
+    this->brightness = brightness;
   }
 
 };

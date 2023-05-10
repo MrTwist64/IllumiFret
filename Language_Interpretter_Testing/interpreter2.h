@@ -11,8 +11,11 @@
 class Interpreter2 
 {
 private:
+  BLEDevice* central;
+  BLEBoolCharacteristic* exitFileChar;
   LEDBoard board;
   String input;
+  int brightness;
   int i;
   char ch;
   int red, green, blue;
@@ -255,11 +258,10 @@ private:
     return true;
   }
 
-  BLEStringCharacteristic* switchCharacteristic;
-
 public: 
-  Interpreter2(BLEStringCharacteristic* switchCharacteristic) {
-    this->switchCharacteristic = switchCharacteristic;
+  Interpreter2(BLEDevice* central, BLEBoolCharacteristic* exitFileChar) {
+    this->central = central;
+    this->exitFileChar = exitFileChar;
   }
 
   // Sets and cleans the input.
@@ -279,16 +281,13 @@ public:
     i = 0;
     ch = input[i];
 
-    Serial.println("From inside playInput()");
-    Serial.println(switchCharacteristic->value());
-
     while (true)
     {
-      Serial.println("Inside Loop");
-      if (switchCharacteristic->written())
-        return;
+      if (checkChars())
+        break;
       // Serial.print("Searching for ");
       // Serial.println(ch);
+      // Serial.println("Reading File");
 
       // Test for "StartFrame".
       if (ch == 'S')
@@ -313,6 +312,20 @@ public:
       // Serial.println(ch);
       _nextChar();
     }
+  }
+
+  bool checkChars() {
+    if (central->connected()) {
+      if (exitFileChar->written() && exitFileChar->value() == true) {
+        exitFileChar->writeValue(false);
+        return true; 
+      }
+    }
+    return false;
+  }
+
+  void setBrightness(int brightness) {
+    board.setBrightness(brightness);
   }
 
 };

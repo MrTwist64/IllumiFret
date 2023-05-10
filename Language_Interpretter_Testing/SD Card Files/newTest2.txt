@@ -1,4 +1,4 @@
-Name:Test Program for Prototype;
+Name:Test Program;
 
 StartFrame:100;
   Color:100,0,0;
