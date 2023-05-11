@@ -1,8 +1,21 @@
 #include <ArduinoBLE.h>
+#include <Arduino.h>
+#include <U8g2lib.h>
+#include <Wire.h>
 
 #include "sdAccess.h"
 #include "interpreter.h"
 #include "ledBoard.h"
+
+#define PIN_WIRE_SCL D5
+#define PIN_WIRE_SDA D4
+#define HEIGHT 64
+#define WIDTH 128
+
+U8G2_SSD1306_128X64_NONAME_1_HW_I2C oled(
+  U8G2_R2, // Rotation
+  U8X8_PIN_NONE // Reset
+);
 
 BLEService fileService("157450a3-e880-42e4-bdda-891b93d852dd");
 BLEBoolCharacteristic* requestFilesChar = new BLEBoolCharacteristic("b1e3f114-045f-4c24-b094-c892eb4f3f65", BLERead | BLEWrite); // Used to request and end list of files
@@ -27,6 +40,7 @@ void setup() {
   Serial.begin(9600);
   //while (!Serial);
   
+  // Set up on-board LED
   pinMode(LED_BUILTIN, OUTPUT);
 
   // Set up BLE
@@ -49,23 +63,33 @@ void setup() {
   // Initialize sd card
   sd.init();
 
+  // Initialize screen
+  oled.begin();
+  oled.setFont(u8g2_font_t0_11_mf);
+  String toDisplay[6] = {"Waiting for", "connection..."};
+  displayStringManual(toDisplay);
+
   while(true) {
     digitalWrite(LED_BUILTIN, LOW); // Indicates waiting for connection
     central = BLE.central();
     if (central.connected()) {
       digitalWrite(LED_BUILTIN, HIGH); // Indicates connection has been made
+      String toDisplay[6] = {"Connected! Waiting", "for input..."};
+      displayStringManual(toDisplay);
       break;
     }
   }
 
   inter = new Interpreter(&central, exitFileChar);
-  //inter->setBrightness(10);
 }
 
 void loop() {
   if (central.connected()) {
     board->showFrame();
-    exitFileChar->writeValue(false);
+    if (exitFileChar->value()) {
+      exitFileChar->writeValue(false);
+      displayString("Waiting for input...");
+    }
 
     if (stringChar->written()) {
       Serial.println(stringChar->value());
@@ -74,6 +98,7 @@ void loop() {
 
     if (brightnessChar->written()) {
       inter->setBrightness(brightnessChar->value());
+      displayString("Brightness: " + String(brightnessChar->value()));
     }
 
     if (requestFilesChar->written() && requestFilesChar->value() == true) {
@@ -85,12 +110,13 @@ void loop() {
 }
 
 void playFile(String name) {
+  displayString("Loading " + name);
   Serial.println(sd.fileLongName(name));
-  String input = sd.fileToString(name); // "newTest2.txt"
-  // String input = sd.fileToString("cPenta.txt");
+  String input = sd.fileToString(name);
   inter->setInput(input);
   Serial.println(inter->getInput());
-  inter->playInput(); // Plays animation, does NOT return
+  displayString("Playing:            " + sd.fileLongName(name));
+  inter->playInput();
 }
 
 void sendFiles() {
@@ -112,4 +138,29 @@ void sendFiles() {
   }
     
   Serial.println(files);
+}
+
+int yLineStart[] = {8, 19, 30, 41, 52, 63};
+int widthLimit = 20;
+
+void displayString(String str) {
+  oled.firstPage();
+  do {
+    int line = 0;
+    for(int i = 0; i < str.length(); i += widthLimit) {
+      oled.setCursor(0, yLineStart[line]);
+      oled.print(str.substring(i, i + widthLimit));
+      line++;
+    }
+  } while ( oled.nextPage() );
+}
+
+void displayStringManual(String str[6]) {
+  oled.firstPage();
+  do {
+    for (int i = 0; i < 6; i++) {
+      oled.setCursor(0, yLineStart[i]);
+      oled.print(str[i]);
+    }
+  } while ( oled.nextPage() );
 }

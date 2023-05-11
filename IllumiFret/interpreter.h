@@ -316,8 +316,7 @@ public:
 
   bool checkChars() {
     if (central->connected()) {
-      if (exitFileChar->written() && exitFileChar->value() == true) {
-        exitFileChar->writeValue(false);
+      if (exitFileChar->written() && exitFileChar->value()) {
         return true; 
       }
     }
