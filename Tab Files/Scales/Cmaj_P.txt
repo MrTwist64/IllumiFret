@@ -1,0 +1,10 @@
+Name:Cmaj_P;
+
+StartFrame:0;
+  Color:100,0,0;
+    LEDS:51,23,45,18,68,3A,5D,2F,4H,1K,6K,3M;
+  Color:0,0,100;
+    LEDS:10,20,30,40,60,32,42,13,53,63,15,25,35,55,65,27,37,47,58,49,1A,2A,5A,6A,1C,2C,3C,4C,6C,3E,4E,1F,5F,6F,1H,2H,3H,5H,6H,2J,3J,4J,5K,4L,1M,2M,5M,6M;
+EndFrame;
+
+Repeat;

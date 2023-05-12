@@ -1,0 +1,10 @@
+Name:Fmaj_P;
+
+StartFrame:0;
+  Color:100,0,0;
+    LEDS:11,61,33,56,28,4A,1D,6D,3F,5I,2K,4M;
+  Color:0,0,100;
+    LEDS:20,30,40,51,42,13,23,53,63,15,25,35,45,65,37,47,18,58,68,1A,2A,3A,5A,6A,2C,3C,4C,5D,4E,1F,2F,5F,6F,1H,2H,3H,4H,6H,3J,4J,1K,5K,6K,1M,2M,3M,5M,6M;
+EndFrame;
+
+Repeat;

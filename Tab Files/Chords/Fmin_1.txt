@@ -1,0 +1,10 @@
+Name:Fmin-1;
+
+StartFrame:0;
+  Color:100,0,0;
+    LEDS:11,33;
+  Color:0,0,100;
+    LEDS:41,51,61,23;
+EndFrame;
+
+Repeat;

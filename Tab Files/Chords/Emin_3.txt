@@ -1,0 +1,10 @@
+Name:Emin-3;
+
+StartFrame:0;
+  Color:100,0,0;
+    LEDS:27,49;
+  Color:0,0,100;
+    LEDS:67,58,39;
+EndFrame;
+
+Repeat;

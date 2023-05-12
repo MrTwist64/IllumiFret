@@ -1,0 +1,10 @@
+Name:Fmaj-2;
+
+StartFrame:0;
+  Color:100,0,0;
+    LEDS:2A,4C;
+  Color:0,0,100;
+    LEDS:6A,3C,5C;
+EndFrame;
+
+Repeat;

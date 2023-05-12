@@ -1,0 +1,10 @@
+Name:A Maj - 2;
+
+StartFrame:0;
+  Color:100,0,0;
+    LEDS:15,37;
+  Color:0,0,100;
+    LEDS:55,65,46,27;
+EndFrame;
+
+Repeat;

@@ -1,0 +1,10 @@
+Name:Amin_P;
+
+StartFrame:0;
+  Color:100,0,0;
+    LEDS:20,42,15,65,37,5A,2C,4E,1H,6H,3J,5M;
+  Color:0,0,100;
+    LEDS:10,30,40,60,51,32,13,23,53,63,25,35,45,55,27,47,18,58,68,49,1A,2A,3A,6A,1C,3C,4C,6C,5D,3E,1F,2F,5F,6F,2H,3H,4H,5H,2J,4J,1K,5K,6K,4L,1M,2M,3M,6M;
+EndFrame;
+
+Repeat;

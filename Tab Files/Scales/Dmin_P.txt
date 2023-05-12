@@ -1,0 +1,10 @@
+Name:Dmin_P;
+
+StartFrame:0;
+  Color:100,0,0;
+    LEDS:30,53,25,47,1A,6A,3C,5F,2H,4J,1M,6M;
+  Color:0,0,100;
+    LEDS:20,40,11,51,61,42,13,23,33,63,15,35,45,65,56,37,18,28,58,68,2A,3A,4A,5A,2C,4C,1D,5D,6D,4E,1F,2F,3F,6F,1H,3H,4H,6H,5I,3J,1K,2K,5K,6K,2M,3M,4M,5M;
+EndFrame;
+
+Repeat;

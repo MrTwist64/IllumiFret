@@ -1,0 +1,10 @@
+Name:Gmaj-1;
+
+StartFrame:0;
+  Color:100,0,0;
+    LEDS:13,63;
+  Color:0,0,100;
+    LEDS:30,40,50,22;
+EndFrame;
+
+Repeat;

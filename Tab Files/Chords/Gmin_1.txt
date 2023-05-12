@@ -1,0 +1,10 @@
+Name:Gmin-1;
+
+StartFrame:0;
+  Color:100,0,0;
+    LEDS:13,63,35;
+  Color:0,0,100;
+    LEDS:43,53,25;
+EndFrame;
+
+Repeat;

@@ -1,0 +1,10 @@
+Name:Cmin -1;
+
+StartFrame:0;
+  Color:100,0,0;
+    LEDS:23,45;
+  Color:0,0,100;
+    LEDS:53,63,35;
+EndFrame;
+
+Repeat;

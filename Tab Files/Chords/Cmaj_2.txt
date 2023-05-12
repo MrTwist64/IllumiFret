@@ -1,0 +1,10 @@
+Name:C Maj -2;
+
+StartFrame:0;
+  Color:100,0,0;
+    LEDS:23,45;
+  Color:0,0,100;
+    LEDS:63,35,55;
+EndFrame;
+
+Repeat;

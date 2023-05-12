@@ -1,0 +1,10 @@
+Name:Bmin -1;
+
+StartFrame:0;
+  Color:100,0,0;
+    LEDS:22,44;
+  Color:0,0,100;
+    LEDS:62,53,34;
+EndFrame;
+
+Repeat;

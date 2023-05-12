@@ -1,0 +1,10 @@
+Name:B Maj - 3;
+
+StartFrame:0;
+  Color:100,0,0;
+    LEDS:5C;
+  Color:0,0,100;
+    LEDS:4B,6B;
+EndFrame;
+
+Repeat;

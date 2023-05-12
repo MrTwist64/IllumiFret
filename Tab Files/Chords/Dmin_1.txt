@@ -1,0 +1,10 @@
+Name:Dmin -1;
+
+StartFrame:0;
+  Color:100,0,0;
+    LEDS:30,53;
+  Color:0,0,100;
+    LEDS:20,61,42;
+EndFrame;
+
+Repeat;

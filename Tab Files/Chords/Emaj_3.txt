@@ -1,0 +1,10 @@
+Name:Emaj -3;
+
+StartFrame:0;
+  Color:100,0,0;
+    LEDS:55;
+  Color:0,0,100;
+    LEDS:44,64;
+EndFrame;
+
+Repeat;

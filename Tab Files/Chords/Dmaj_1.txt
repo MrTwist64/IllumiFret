@@ -1,0 +1,10 @@
+Name:D Maj -1;
+
+StartFrame:0;
+  Color:100,0,0;
+    LEDS:30,52;
+  Color:0,0,100;
+    LEDS:20,41,61;
+EndFrame;
+
+Repeat;

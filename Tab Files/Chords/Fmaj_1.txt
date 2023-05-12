@@ -1,0 +1,10 @@
+Name:Fmaj-1;
+
+StartFrame:0;
+  Color:100,0,0;
+    LEDS:10,60,32;
+  Color:0,0,100;
+    LEDS:50,41,22;
+EndFrame;
+
+Repeat;
