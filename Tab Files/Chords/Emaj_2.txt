@@ -1,4 +1,4 @@
-Name:Emaj -2;
+Name:E Maj - 2;
 
 StartFrame:0;
   Color:100,0,0;

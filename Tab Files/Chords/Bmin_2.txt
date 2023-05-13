@@ -1,4 +1,4 @@
-Name:Bmin -2;
+Name:B Min - 2;
 
 StartFrame:0;
   Color:100,0,0;

@@ -1,4 +1,4 @@
-Name:Cmin -1;
+Name:C Min - 1;
 
 StartFrame:0;
   Color:100,0,0;

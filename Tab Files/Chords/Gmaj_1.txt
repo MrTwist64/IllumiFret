@@ -1,4 +1,4 @@
-Name:Gmaj-1;
+Name:G Maj - 1;
 
 StartFrame:0;
   Color:100,0,0;

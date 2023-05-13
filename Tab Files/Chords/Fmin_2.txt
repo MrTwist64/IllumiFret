@@ -1,4 +1,4 @@
-Name:Fmin-2;
+Name:F Min - 2;
 
 StartFrame:0;
   Color:100,0,0;

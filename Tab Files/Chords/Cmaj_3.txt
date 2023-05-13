@@ -1,4 +1,4 @@
-Name:C Maj -3;
+Name:C Maj - 3;
 
 StartFrame:0;
   Color:100,0,0;

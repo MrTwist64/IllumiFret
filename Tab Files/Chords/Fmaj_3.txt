@@ -1,4 +1,4 @@
-Name:Fmaj-3;
+Name:F Maj - 3;
 
 StartFrame:0;
   Color:100,0,0;
